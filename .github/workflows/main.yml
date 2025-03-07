@@ -20,16 +20,6 @@ jobs:
     - name: Install Syft
       run: |
         curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
-        
-    # - name: Generate SBOM
-    #   run: |
-    #     syft docker.io/library/nginx:latest -o cyclonedx-xml > sbom.xml
-
-    # - name: Upload SBOM Artifact
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #     name: sbom-report
-    #     path: sbom.xml
 
     - name: Generate SBOM
       run: |
@@ -38,5 +28,5 @@ jobs:
     - name: Upload SBOM Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: sbom-report
+        name: spdx-report
         path: spdx.json
